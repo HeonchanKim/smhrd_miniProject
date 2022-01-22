@@ -57,7 +57,7 @@ public class ViewMain {
 				System.out.print("　　　　  　　　PW : ");
 				String pw = sc.next();
 				
-				boolean check = userDAO.insertUser(id, pw); // boolean true나 false
+				boolean check = userDAO.insertUser(id, pw);
 
 				if (check) {
 					System.out.println("");

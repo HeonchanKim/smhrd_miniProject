@@ -52,8 +52,6 @@ public class WordListDAO {
 		connect();
 		
 		ArrayList<WordListVO> al = new ArrayList<WordListVO>();
-		
-		
 		try {
 			String sql = "SELECT * FROM WORD_LIST WHERE YEAR = ?";
 			
@@ -65,17 +63,13 @@ public class WordListDAO {
 			
 			while(rs.next()) {
 				
-				String word = rs.getString("WORD"); //현재 커서가 가르키고 있는 행의 첫번째 컬럼값을 읽어오겠다!
-				String mean = rs.getString("MEAN"); //컬럼이름과 일치하게 작성
+				String word = rs.getString("WORD"); 
+				String mean = rs.getString("MEAN"); 
 				int year = rs.getInt("YEAR");
 				String hint1 = rs.getString("HINT1");
 				String hint2 = rs.getString("HINT2");
 				
-				//위에서 읽어온 값들로 초기화시켜 생성한 StudentVO 객체의 참조값을
-				//ArrayList에 추가
 				al.add(new WordListVO(word, mean, year, hint1, hint2));
-				
-				
 			}
 		}catch (Exception e){
 			e.printStackTrace();
@@ -84,4 +78,9 @@ public class WordListDAO {
 		}
 		return al;
 	}
+	
+	
+	
+	
+	
 }
