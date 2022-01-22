@@ -36,7 +36,7 @@
 ### 4.1. 전체 흐름
 
 <p align="center">
-    <img src="./img/흐름.png">
+    <img src="https://github.com/HeonchanKim/smhrd_miniProject/blob/master/images/%ED%9D%90%EB%A6%84%EB%8F%84.png?raw=true">
 </p>
 
 전체 흐름을 간단히 표시했습니다. 실행하면 먼저 1.회원가입 2.로그인 3.종료 3가지 선택을 할 수 있고 회원가입을 하면 다시 첫 화면으로 돌아옵니다. 로그인을 선택 시 로그인 성공과 실패로 나뉩니다. 로그인 실패 시 실패 문구와 함께 다시 첫 화면으로 돌아옵니다.
@@ -44,18 +44,18 @@
 </br></br>    
 
 <p align="center">
-    <img src="./img/게임시작.png">
+    <img src="https://github.com/HeonchanKim/smhrd_miniProject/blob/master/images/%EA%B2%8C%EC%9E%84%EC%8B%9C%EC%9E%91.PNG?raw=true">
 <p align="center">
-    <img src="./img/힌트및정답입력.png">
+    <img src="https://github.com/HeonchanKim/smhrd_miniProject/blob/master/images/%ED%9E%8C%ED%8A%B8%EB%B0%8F%EC%A0%95%EB%8B%B5%EC%9E%85%EB%A0%A5.PNG?raw=true">
 <p align="center">
-    <img src="./img/게임후결과.png">
+    <img src="https://github.com/HeonchanKim/smhrd_miniProject/blob/master/images/%EA%B2%8C%EC%9E%84%ED%9B%84%EA%B2%B0%EA%B3%BC.PNG?raw=true">
 </p>
 
 <b>로그인에 성공하면</b> 게임하기, 누적결과보기, 랭킹보기, 로그아웃 4가지 선택지가 있습니다. 게임하기를 누르면 또다시 2000년대 2010년대 2020년대 3가지 년도 선택이 주어지고 년도를 선택하면 문제와 함께 다시 정답입력, 힌트보기 선택이 주어집니다. <b>힌트보기는 두 번까지만</b> 볼 수 있고 이후에 힌트보기를 선택하면 "모든힌트를 다 보셨습니다!!"가 출력됩니다. 문제를 모두 풀고 난 후 맞춘 점수가 표시됩니다.
 </br></br>
 
 <p align="center">
-    <img src="./img/누적결과.png">
+    <img src="https://github.com/HeonchanKim/smhrd_miniProject/blob/master/images/%EB%88%84%EC%A0%81%EA%B2%B0%EA%B3%BC.PNG?raw=true">
 </p>
 
 누적결과를 선택하면 로그인한 아이디의 누적된 점수 보여주며 점수별로 보이는 모습과 소리가 다릅니다.
@@ -63,7 +63,7 @@
 </br></br>
 
 <p align="center">
-    <img src="./img/랭킹.png">
+    <img src="https://github.com/HeonchanKim/smhrd_miniProject/blob/master/images/%EB%9E%AD%ED%82%B9.PNG?raw=true">
 </p>
 랭킹 확인을 선택하면 상위점수 10명이 출력됩니다.
 </br></br>
