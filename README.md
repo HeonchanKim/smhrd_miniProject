@@ -20,7 +20,7 @@
 
 ## 3. ERD 설계
 <p align="center">
-    <img src="./img/mini.png">
+    <img src="https://github.com/HeonchanKim/smhrd_miniProject/blob/master/images/mini.png?raw=true">
 </p>
 
 
