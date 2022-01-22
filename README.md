@@ -73,12 +73,32 @@
     <img src="https://github.com/HeonchanKim/smhrd_miniProject/blob/master/images/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85.png?raw=true">
 </p>
 
-:pushpin: [코드 확인](https://github.com/HeonchanKim/smhrd_miniProject/blob/master/miniProject/src/Model/UserInfoDAO.java#L49)
-회원가입 기능 insertUser()메서드는 id, pw를 매개변수로 받아 USER_INFO 테이블에 삽입하면 boolean 타입을 반환해 사용자에게 가입성공, 실패를 보여줍니다.
+:pushpin: [코드 확인](https://github.com/HeonchanKim/smhrd_miniProject/blob/master/miniProject/src/Model/UserInfoDAO.java#L49)</br>
+- 회원가입 기능 insertUser()메서드는 id, pw를 매개변수로 받아 USER_INFO 테이블에 삽입하면 boolean 타입을 반환해 사용자에게 가입성공, 실패를 보여줍니다.
 
 
 
 ### 4.3. 로그인
+<p align="center">
+    <img src="https://github.com/HeonchanKim/smhrd_miniProject/blob/master/images/%EB%A1%9C%EA%B7%B8%EC%9D%B8.png?raw=true">
+</p>
+
+:pushpin: [코드 확인](https://github.com/HeonchanKim/smhrd_miniProject/blob/master/miniProject/src/Model/UserInfoDAO.java#L78)</br>
+- 로그인 기능 login()메서드는 id, password를 매개변수로 받고 USER_INFO 테이블에 매개변수로 받은 id와 password가 있으면 boolean 타입을 반환해 사용자에게 로그인 성공, 실패를 알립니다.
+- 로그인 성공 시 게임을 진행할 수 있습니다.
+
+
+### 4.3. Controller
+<p align="center">
+    <img src="https://github.com/HeonchanKim/smhrd_miniProject/blob/master/images/Controller.png?raw=true">
+</p>
+
+:pushpin: [코드 확인](https://github.com/HeonchanKim/smhrd_miniProject/blob/master/miniProject/src/Controller/GameStartController.java#L15)</br>
+- 게임 진행을 위한 Controller 입니다. 
+- 사용자에게  yearNum 연도를 선택 받으면 WordListDAO에서 wordList()에 매개변수로 넣어줍니다. WORD_LIST 테이블에서 yearNum과 일치하는 YEAR값을 추출하고 AraayList에 담아서 반환합니다.
+- ArrayList로 받은 객체를 Collections의 shuffle()메서드를 사용해 인덱스를 무작위 정렬 시켜줍니다. 그리고 사용자에게 문제를 출력해줍니다
+
+
 </div>
 </details>
 
@@ -86,11 +106,84 @@
 </br>
 
 ## 5. 핵심 트러블 슈팅
-### 5.1. 컨텐츠 필터와 페이징 처리 문제
+### 5.1. 로그아웃 후 재로그인 시 무조건 로그인 성공
+- 로그인 메서드기능을 어렵지않게 구현하고 이것저것 테스트해보면서 로그아웃후 다시 로그인 할때 무조건 로그인이 되버리는 현상이 발생하였다. 
+- 이유는 UserInfoDAO에 전역변수로 boolean타입의 check 변수를 false로 선언해놓고 코드 안에서 썼다. 그래서 한번 로그인하고 나면 check 변수는 true 값으로 유지가 되어서 그랬었다.
+
+<details>
+<summary><b>기존 코드</b></summary>
+<div markdown="1">
+
+~~~java
+boolean check1 = false;
+public boolean login(String id, String password) {
+		try {
+			// jdbc 드라이버 불러오기
+			connect();
+
+			String sql = "SELECT ID, PASSWORD FROM USER_INFO";
+			pst = conn.prepareStatement(sql);
+			rs = pst.executeQuery();
+			
+			while (rs.next()) {
+				String get_id = rs.getString("ID");
+				String get_password = rs.getString("PASSWORD");
+				
+				if (get_id.equals(id) && get_password.equals(password)) {
+					check1 = true;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return check1;
+	}
+~~~
+</div>
+</details>
 </br>
 
-## 6. 그 외 트러블 슈팅
+- login()메서드가 실행될 때마다 check 변수는 false 값이 되어야 로그아웃 후 재로그인시에도 정상적으로 작동하게 된다.
+<details>
+<summary><b>개선된 코드</b></summary>
+<div markdown="1">
+
+~~~java
+public boolean login(String id, String password) {
+        boolean check1 = false;
+		try {
+			// jdbc 드라이버 불러오기
+			connect();
+
+			String sql = "SELECT ID, PASSWORD FROM USER_INFO";
+			pst = conn.prepareStatement(sql);
+			rs = pst.executeQuery();
+			
+			while (rs.next()) {
+				String get_id = rs.getString("ID");
+				String get_password = rs.getString("PASSWORD");
+				
+				if (get_id.equals(id) && get_password.equals(password)) {
+					check1 = true;
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			close();
+		}
+		return check1;
+	}
+~~~
+</div>
+</details>
+
+
+
 </br>
 
-## 7. 회고 / 느낀점
->프로젝트 개발 회고 글: 
+
+## 6. 회고 / 느낀점
+>프로젝트 개발 회고 글: https://heonchan.tistory.com/entry/%EB%AF%B8%EB%8B%88%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%98%81%EC%96%B4-%EB%8B%A8%EC%96%B4-%EB%A7%9E%EC%B6%94%EA%B8%B0-%EA%B2%8C%EC%9E%8424%EC%9D%BC%EC%B0%A8?category=990160
