@@ -68,8 +68,16 @@
 랭킹 확인을 선택하면 상위점수 10명이 출력됩니다.
 </br></br>
 
+### 4.2. 회원가입
+<p align="center">
+    <img src="https://github.com/HeonchanKim/smhrd_miniProject/blob/master/images/%ED%9A%8C%EC%9B%90%EA%B0%80%EC%9E%85.png?raw=true">
+</p>
+:pushpin: [코드 확인](https://github.com/HeonchanKim/smhrd_miniProject/blob/master/miniProject/src/Model/UserInfoDAO.java#L49)
+회원가입 기능 insertUser()메서드는 id, pw를 매개변수로 받아 USER_INFO 테이블에 삽입하면 boolean 타입을 반환해 사용자에게 가입성공, 실패를 보여줍니다.
 
 
+
+### 4.3. 로그인
 </div>
 </details>
 
