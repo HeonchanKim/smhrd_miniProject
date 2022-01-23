@@ -1,5 +1,0 @@
-INDEX VERSION 1.131+E:\Project\smhrd_miniProject\.metadata\.plugins\org.eclipse.jdt.core
-192081947.index
-3530683085.index
-3058506207.index
-2110582514.index
